@@ -25,8 +25,6 @@ def get_walkers():
     }
     return jsonify(response_body), 200
 
-
-
 @api.route('/walkers/<int:walker_id>', methods=['GET'])
 def get_walker(walker_id):
 
@@ -43,29 +41,6 @@ def get_walker(walker_id):
     }
     return jsonify(response_body), 200
 
-
-@api.route('/walkers/<int:walker_id>', methods=['PUT'])
-def update_walker(walker_id):
-    walker = Walker.query.get(walker_id)
-    body = request.get_json()
-
-    updatewalker = Walker.query.get(walker_id)
-
-    if "first_name" in body:
-        walker.first_name = body["first_name"]
-    if "last_name" in body:
-        walker.last_name = body["last_name"]
-    if "username" in body:
-        walker.username = body["username"]
-
-    db.session.commit()
-
-    response_body ={
-        "message": "ok",
-        "updateMsg": "User Updated.",
-        "upadateowner": updatewalker.serialize()
-    }
-    return jsonify(response_body), 200
 
 
 
@@ -103,25 +78,24 @@ def get_owner(owner_id):
     }
     return jsonify(response_body), 200
 
-@api.route('/owners/<int:owner_id>', methods=['PUT'])
-def put_owner_id(owner_id):
+@api.route('/owner/<int:owner_id>', methods=['PUT'])
+def put_owner_id(dog_id):
     body = request.get_json()
 
-    updateowner = Owner.query.get(owner_id)
+    updateowner = Owner.query.get(body['owner_id'])
 
     if "first_name" in body:
-        updateowner.first_name = body["first_name"]
-    if "last_name" in body:
-        updateowner.last_name = body["last_name"]
-    if "username" in body:
-        updateowner.username = body["username"]
+        updatedog.name = body['first_name']
+    if 'last_name' in body:
+        updatedog.diameter = body['last_name']
+    if 'username' in body:
+        updatedog.diameter = body['username']
 
     db.session.commit()
 
     response_body = {
         "message": "ok",
-        "updateMsg": "User Updated.",
-        "upadateowner": updateowner.serialize()
+        "updateMsg": "User Updated."
     }
 
     return jsonify(response_body), 200
@@ -170,21 +144,20 @@ def get_dog_id(owner_id):
 def put_dog_id(dog_id):
     body = request.get_json()
 
-    updatedog = Dog.query.get(dog_id)
+    updatedog = Dog.query.get(body['dog_id'])
 
     if "name" in body:
         updatedog.name = body['name']
     if 'breed' in body:
-        updatedog.breed = body['breed']
+        updatedog.diameter = body['breed']
     if 'age' in body:
-        updatedog.age = body['age']
+        updatedog.population = body['age']
 
     db.session.commit()
 
     response_body = {
         "message": "ok",
-        "updateMsg": "Dog Updated.",
-        "updatedog": updatedog.serialize()
+        "updateMsg": "Dog Updated."
     }
 
     return jsonify(response_body), 200

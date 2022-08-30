@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: cb242574093a
+Revision ID: b60f3d4c61d4
 Revises: 
-Create Date: 2022-08-30 00:31:29.232572
+Create Date: 2022-08-28 02:54:53.326201
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'cb242574093a'
+revision = 'b60f3d4c61d4'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -24,7 +24,6 @@ def upgrade():
     sa.Column('username', sa.String(length=120), nullable=False),
     sa.Column('first_name', sa.String(length=200), nullable=False),
     sa.Column('last_name', sa.String(length=200), nullable=False),
-    sa.Column('description', sa.String(length=400), nullable=True),
     sa.Column('email', sa.String(length=200), nullable=False),
     sa.Column('password', sa.String(length=200), nullable=False),
     sa.Column('verify_password', sa.String(length=200), nullable=False),
@@ -41,7 +40,6 @@ def upgrade():
     sa.Column('username', sa.String(length=120), nullable=False),
     sa.Column('first_name', sa.String(length=200), nullable=False),
     sa.Column('last_name', sa.String(length=200), nullable=False),
-    sa.Column('description', sa.String(length=400), nullable=True),
     sa.Column('email', sa.String(length=200), nullable=False),
     sa.Column('password', sa.String(length=200), nullable=False),
     sa.Column('verify_password', sa.String(length=200), nullable=False),
@@ -57,7 +55,6 @@ def upgrade():
     sa.Column('name', sa.String(length=200), nullable=False),
     sa.Column('breed', sa.String(length=200), nullable=False),
     sa.Column('age', sa.Integer(), nullable=False),
-    sa.Column('description', sa.String(length=400), nullable=True),
     sa.Column('file', sa.Text(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['owner.id'], ondelete='CASCADE'),

@@ -97,11 +97,9 @@ export const Navbar = () => {
                       aria-labelledby="navbarDropdown"
                     >
                       <li>
-                        <Link to={"/userinfo"}>
-                          <a className="dropdown-item" href="#">
-                            Edita tu perfil
-                          </a>
-                        </Link>
+                        <a className="dropdown-item" href="#">
+                          Edita tu perfil
+                        </a>
                       </li>
                       <li>
                         <hr className="dropdown-divider" />
